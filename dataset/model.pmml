@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.4.7"/>
+		<Timestamp>2018-03-05T17:44:49Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr', n_jobs=1,
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0, warm_start=False))])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="dv" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="car_destination_probability" optype="continuous" dataType="double"/>
+		<DataField name="hotel_destination_probability" optype="continuous" dataType="double"/>
+		<DataField name="length_of_stay_days" optype="continuous" dataType="double"/>
+		<DataField name="advanced_purchase_window_days" optype="continuous" dataType="double"/>
+		<DataField name="booking_platform" optype="continuous" dataType="double"/>
+		<DataField name="is_car_booked_for_trip" optype="continuous" dataType="double"/>
+		<DataField name="is_flight_booked_for_trip" optype="continuous" dataType="double"/>
+		<DataField name="is_hotel_booked_for_trip" optype="continuous" dataType="double"/>
+	</DataDictionary>
+	<RegressionModel functionName="classification" normalizationMethod="logit">
+		<MiningSchema>
+			<MiningField name="dv" usageType="target"/>
+			<MiningField name="car_destination_probability"/>
+			<MiningField name="hotel_destination_probability"/>
+			<MiningField name="length_of_stay_days"/>
+			<MiningField name="advanced_purchase_window_days"/>
+			<MiningField name="booking_platform"/>
+			<MiningField name="is_car_booked_for_trip"/>
+			<MiningField name="is_flight_booked_for_trip"/>
+			<MiningField name="is_hotel_booked_for_trip"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<RegressionTable intercept="-1.2576249922030336" targetCategory="1">
+			<NumericPredictor name="car_destination_probability" coefficient="3.868488919318376"/>
+			<NumericPredictor name="hotel_destination_probability" coefficient="-0.7341056202970695"/>
+			<NumericPredictor name="length_of_stay_days" coefficient="0.1000099949284627"/>
+			<NumericPredictor name="advanced_purchase_window_days" coefficient="-0.0010080580385154285"/>
+			<NumericPredictor name="booking_platform" coefficient="-1.2576249922030336"/>
+			<NumericPredictor name="is_car_booked_for_trip" coefficient="1.0901557807895825"/>
+			<NumericPredictor name="is_flight_booked_for_trip" coefficient="0.8782601927328317"/>
+			<NumericPredictor name="is_hotel_booked_for_trip" coefficient="-0.857849067150994"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.0" targetCategory="0"/>
+	</RegressionModel>
+</PMML>
